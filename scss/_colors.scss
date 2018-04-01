@@ -1,0 +1,146 @@
+$white1: rgba(243, 243, 243, 1);
+$white2: rgba(237, 237, 237, 1);
+$white50: rgba(white, 0.5);
+$white75: rgba(white, 0.75);
+$black40: rgba(black, 40);
+$black50: rgba(black, 50);
+$grey: #999;
+$medBlue: rgb(0, 116, 217);
+$medGrey: #666;
+$darkGrey: #333;
+$grey2: #9D9D93;
+$grey3: #5C5151;
+$red: #e74c3c;
+$blue: rgba(44, 62, 80, 1);
+$blueA: rgba(44, 62, 80, .8);
+$hover:#000;
+$active:$hover;
+
+$fire1: rgba(70, 137, 102, 1);
+$fire2: rgba(255, 239, 165, 1);
+$fire3: rgba(255, 175, 59, 1);
+$fire4: rgba(182, 73, 38, 1);
+$fire5: rgba(142, 40, 0, 1);
+
+// more Colors
+$orange: #f76030;
+$orange2: #fb5f24;
+$dk-orange: darken($orange, 15);
+$red: #f93b32;
+$purp: #aa3655;
+$burg: #5b2d3c;
+$lt-grey: #f5f5f5;
+$grey: #7d7d7d;
+$dk-grey: #333;
+$shadow: #241f1c;
+$bg-clr: #fff;
+
+// bg gradients
+$trans-right: linear-gradient(90deg, rgba($lt-grey, 1) 45%, rgba($lt-grey, 0) 100%);
+$trans-left: linear-gradient(270deg, rgba($lt-grey, 1) 45%, rgba($lt-grey, 0)) 100%;
+$trans-down: linear-gradient(0deg, rgba($lt-grey, 1) 10%, rgba($lt-grey, .75) 30%, rgba($lt-grey, .3)) 100%;
+
+
+//gradient class
+.white-gloss {
+	// http://colorzilla.com/gradient-editor/#ffffff+0,f3f3f3+50,ededed+51,ffffff+100;White+Gloss+%232
+	background-color: white; // Old browsers
+	//@include filter-gradient(white, white, vertical); // IE6-9
+	@include background-image(linear-gradient(top, white 0%, $white1 50%, $white2 51%, white 100%));
+}
+
+/* Obnoxious styling for icon fonts */
+.contact .fa {
+	transition: all .5s ease;
+	color:$dk-grey;
+	//border:1px solid transparent;
+	border:none;
+	&.fa-envelope-o {
+		//color: rgb(201, 44, 25);
+		&:hover {
+			//color: white;
+			color: rgb(201, 44, 25);
+			border-color: rgb(201, 44, 25);
+		}
+	}
+
+	&.fa-phone {
+		//color: green;
+		&:hover {
+			color: green;
+			border-color: green;
+		}
+	}
+
+	&.fa-twitter {
+		//color: #4099FF;
+		&:hover {
+			//color: white;
+			color: #4099FF;
+			border-color: #4099FF;
+		}
+	}
+
+	&.fa-linkedin {
+		//color: #0077b5;
+		&:hover {
+			//color: white;
+			color: #0077b5;
+			border-color: #0077b5;
+		}
+	}
+
+	&.fa-drupal {
+		//color: #0678bf;
+		&:hover {
+			//color: white;
+			color: #0678bf;
+			border-color: #0678bf;
+		}
+	}
+
+	&.fa-github {
+		//color: #333;
+		&:hover {
+			//color: white;
+			color: #333;
+			border-color: #333;
+		}
+	}
+
+	&.fa-codepen {
+		//color: black;
+		&:hover {
+			//color: white;
+			color: black;
+			border-color: black;
+		}
+	}
+
+	&.fa-stack-overflow {
+		//color: #07c;
+		&:hover {
+			//color: white;
+			color: #07c;
+			border-color: #07c;
+		}
+	}
+
+	&.fa-dribbble {
+		//color: #ea4c89;
+		&:hover {
+			//color: white;
+			color: #ea4c89;
+			border-color: #ea4c89;
+		}
+	}
+
+	&.fa-fire {
+		//color: #4b2a10;
+		&:hover {
+			//color: white;
+			color: #4b2a10;
+			border-color: #4b2a10;
+		}
+	}
+}

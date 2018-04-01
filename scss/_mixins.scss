@@ -1,0 +1,285 @@
+@mixin set-max-width($max:$page-max-width) {
+	max-width: $max;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin marding($mg:0, $pd:0) {
+	//margin & padding combo
+	margin: $mg;
+	padding: $pd;
+}
+
+@mixin mobile { //Media Queries
+	@media (max-width: #{$mobile-breakpoint - 1px}) {
+		@content;
+	}
+}
+
+@mixin not-mobile {
+	@media (min-width: #{$mobile-breakpoint}) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (min-width: #{$mobile-breakpoint}) and (max-width: #{$tablet-breakpoint - 1px}) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (min-width: #{$tablet-breakpoint}) {
+		@content;
+	}
+}
+
+@mixin over-max-width {
+	@media (min-width: #{$bp-mw}) {
+		@content;
+	}
+}
+
+@mixin default-transition() {
+	transition: all $base-duration $base-timing;
+}
+
+@mixin button-base() {
+	@include default-transition;
+	display: inline-block;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin-bottom: 5px;
+	line-height: 100%;
+	padding: 10px 12px;
+	&:after {
+		display: inline-block;
+		content: '\00BB';
+		padding-left: 3px;
+	}
+}
+
+@mixin flex($justify: center, $align: center, $direction: false, $wrap: false, $display: flex, $aligncontent: false) {
+	@if $display == flex {
+		display: -ms-flexbox;
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: flex;
+	} @else {
+		display: -ms-inline-flexbox;
+		display: -moz-inline-flex;
+		display: -webkit-inline-flex;
+		display: inline-flex;
+	}
+	@if $direction {
+		@include flexprop(flex-direction, $direction);
+	}
+	@if $wrap {
+		@include flexprop(flex-wrap, $wrap);
+	}
+	@if $justify {
+		@include flexprop(justify-content, $justify);
+	}
+	@if $align {
+		@include flexprop(align-items, $align);
+	}
+	@if $aligncontent {
+		@include flexprop(align-content, $aligncontent);
+	}
+}
+
+@mixin flexchild($flexgrow: 1, $flexshrink: 0, $flexbasis: auto, $order: false, $alignself: false) {
+	@if $order {
+		@include flexprop(order, $order);
+	}
+	@include flexprop(flex, ($flexgrow $flexshrink $flexbasis));
+	@if $alignself {
+		@include flexprop(align-self, $alignself);
+	}
+}
+
+@function ieflexvalue($value) {
+	@if $value == flex-start {
+		@return start;
+	}
+	@if $value == flex-end {
+		@return end;
+	}
+	@if $value == space-between {
+		@return justify;
+	}
+	@if $value == space-around {
+		@return distribute;
+	}
+	@if $value == justify-content {
+		@return flex-pack;
+	}
+	@if $value == align-items {
+		@return flex-align;
+	}
+	@if $value == align-content {
+		@return flex-line-pack;
+	}
+	@if $value == align-self {
+		@return flex-item-align;
+	}
+	@if $value == order {
+		@return flex-order;
+	}
+	@return $value;
+}
+
+@mixin flexprop($prop, $value) {
+	-webkit-#{$prop}: $value;
+	-moz-#{$prop}: $value;
+	-ms-#{ieflexvalue($prop)}: ieflexvalue($value);
+	#{$prop}: $value;
+}
+
+@mixin flex-grid($num:3,$x: 5px,$y:$x) {
+	margin-top: -$y;
+	margin-left: -$x;
+	width: auto;
+	& > * {
+		margin-top: $y;
+		margin-left: $x;
+		box-sizing: border-box;
+		@include flexchild(1, 0, calc((99.5% / #{$num}) - #{$x}));
+		min-width: calc((99.5% / #{$num}) - #{$x});
+		max-width: calc((100% / #{$num}) - #{$x});
+	}
+}
+//force grid to one col
+@mixin one-col {
+	@include flexchild(1, 0, calc((99.5% / 1) - #{$x}));
+	min-width: calc((99.5% / 1) - #{$x});
+	max-width: calc((100% / 1) - #{$x});
+}
+// Placeholder text color
+@mixin placeholder($color:black) {
+	&::-webkit-input-placeholder {
+		/* Chrome/Opera/Safari */
+		color: $color;
+	}
+	&::-moz-placeholder {
+		/* Firefox 19+ */
+		color: $color;
+	}
+	&:-ms-input-placeholder {
+		/* IE 10+ */
+		color: $color;
+	}
+	&:-moz-placeholder {
+		/* Firefox 18- */
+		color: $color;
+	}
+}
+
+//annimated underline
+@mixin underline($color, $size:2px, $distance:3px) {
+	&:after {
+		opacity: 0;
+		transition: all .5s ease-out;
+		content: '';
+		display: block;
+		position: relative;
+		top: auto;
+		bottom: -10px;
+		left: 0;
+		right: 0;
+		height: $size;
+		background: $color;
+	}
+	&:hover, &:focus {
+		&:after {
+			opacity: 1;
+			bottom: $distance;
+		}
+	}
+}
+
+@mixin btn-clr($c1,$c2,$border:0,$transition:color .5s ease-out) {
+	color: $c2;
+	background: $c1;
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-ms-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+	&:hover, &:focus {
+		color: $c1;
+		background: $c2;
+		border: $border solid $c1;
+	}
+	&:active, &:visited {
+		color: $c2;
+		background-color: $c1;
+	}
+}
+
+@mixin grey-gradient($src,$size:cover,$position:center) {
+	//@include filter-gradient(#1a000000, #00000000, horizontal); // IE6-9 fallback on horizontal gradient
+	@include background-image(linear-gradient(left top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 23%, rgba(0, 0, 0, 0) 100%), url($src));
+	background-position: $position;
+	background-size: $size;
+	-webkit-background-size: $size;
+	-moz-background-size: $size;
+	-o-background-size: $size;
+}
+
+@mixin stripes($color:#333, $size:5px, $angle:-45deg) {
+	$colorAlt: lighten($color, 15);
+	background: repeating-linear-gradient($angle, $color, $color $size, $colorAlt $size, $colorAlt ($size * 2));
+}
+
+//slide up input labels
+@mixin label-slide($bg:#fff,$border-clr:#000,$px:1px) {
+	.input-group {
+		position: relative;
+		display: block;
+		margin: 0 15px 30px 15px;
+		input, select, textarea {
+			border: $px solid $border-clr;
+			background: $bg !important;
+			padding: 12px;
+			width: 100%;
+			&:focus,
+			&:active {
+				outline: none;
+				border-color:$orange;
+			}
+		}
+		select option{
+			background: $bg !important;}
+		label {
+			position: absolute;
+			z-index: 10;
+			pointer-events: none;
+			-webkit-transform-origin: 0 0;
+			transform-origin: 0 0;
+			-webkit-transform: translateY(100%);
+			transform: translateY(100%);
+			-webkit-transition: -webkit-transform 0.2s linear;
+			transition: -webkit-transform 0.2s linear;
+			transition: transform 0.2s linear;
+			margin-left: 10px;
+			padding: 0 8px;
+			background: $bg;
+			color: $border-clr;
+			&.animate-label {
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+			}
+		}
+	}
+	input[type=submit] {
+		border: $px solid $border-clr;
+		background: none;
+		color: $border-clr;
+	}
+	* {
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+}

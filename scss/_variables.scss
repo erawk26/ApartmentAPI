@@ -1,0 +1,51 @@
+//------// Variables //------//
+
+// Responsive breakpoints
+$mobile-breakpoint: 480px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 960px;
+$page-max-width: 980px;
+$bp-mw: $page-max-width;
+$bp-xs: $mobile-breakpoint;
+$bp-sm: $tablet-breakpoint;
+$bp-md: $desktop-breakpoint;
+$bp-lg: 1200px;
+$bp-xs-max: ($bp-xs - 1);
+$bp-sm-max: ($bp-sm - 1);
+$bp-md-max: ($bp-md - 1);
+$bp-lg-max: ($bp-lg - 1);
+$bp1: $tablet-breakpoint;
+$bp2: $desktop-breakpoint;
+$bp3: $bp-lg;
+$oSans: 'Open Sans', sans-serif;
+
+$bdr: 2px dotted yellow; //layout debugging (dev only)
+$br1: 10px;
+$br2: 4px;
+$br3: 6px;
+// Font weights
+$light: 100;
+$regular: 400;
+$bold: 700;
+// Base Font
+$base-font-family: sans-serif;
+$base-font-weight: $regular;
+$base-font-size: 14px;
+$base-line-height: 1.4;
+// Fixed Font
+$fixed-font-family: monospace;
+$fixed-font-size: 85%;
+$fixed-line-height: $base-line-height;
+// Headings
+$header-font-weight: $bold;
+//
+
+$workSans:"Work Sans", sans-serif;
+$fontSrcSans: "Source Sans Pro", sans-serif;
+$fontCagli: "Cagliostro", cursive;
+$fontBody: $workSans;
+$fontHead: $workSans;
+$fontIcon: "FontAwesome";
+//transitions
+$base-timing: .25s;
+$base-transition: ease-in-out;
