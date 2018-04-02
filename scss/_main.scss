@@ -1,14 +1,50 @@
-.apartments{
-	@include flex($direction:column);
-	$light-gray:#9D9D93;
-	>li{width:100%;
-		background: $light-gray;@extend %boxw;@include flex(flex-start,stretch);>*{&:nth-child(odd){background:rgba(white,.30);}text-align: center;display:block;box-sizing:border-box;padding:10px;@include flexchild(1,null,null);max-width: 245px;}}
-.name{text-align: left;max-width: 100px;}
-.floor{&:not(.label){text-align: left}}
-.beds{max-width: 70px;}
-.baths{max-width: 70px;}
-.min-rent{}
-.max-rent{}
-.apply-link{}
-//@extend %ul-nostyle;
+.apartments {
+  @include flex($direction: column);
+  > li {
+    @extend %boxw;
+    @include flex(flex-start, stretch);
+    width: 100%;
+    > * {
+      @include flexchild(1, null, null);
+      text-align: center;
+      display: block;
+      padding: 10px;
+      max-width: 245px;
+    }
+    &:nth-child(odd) {
+      background: #999CBF;
+      > *:nth-child(even) {
+        background: rgba(white, .30);
+      }
+    }
+    &:nth-child(even) {
+      background:#99bfa3;
+      > *:nth-child(even) {
+        background: rgba(white, .30);
+      }
+    }
+
+  }
+  .name {
+    text-align: left;
+    max-width: 100px;
+  }
+  .floor {
+    &:not(.label) {
+      text-align: left
+    }
+  }
+  .beds {
+    max-width: 70px;
+  }
+  .baths {
+    max-width: 70px;
+  }
+  .min-rent {
+  }
+  .max-rent {
+  }
+  .apply-link {
+  }
+  //@extend %ul-nostyle;
 }

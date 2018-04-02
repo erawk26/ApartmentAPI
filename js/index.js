@@ -1,20 +1,10 @@
-var aptArr = [];
-$(document).ready(function () {
-    $.ajax({//production
-        type: "GET",
-        url: "/api/apartments/",
-        dataType: "json",
-        async: false,
-        success: function (res) {
-            aptArr = res['data'];
-             console.log(res);
-        },
-        error: function (res) {
-            console.log('FAIL');
-            console.log(res);
-        }
-    })
-        .then(function () {
+(function() {
+    fetch("/api/apartments/")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function (obj) {
+            aptArr = obj.data;
             if (aptArr.length > 0) {
                 aptList = "<ul class='apartments'>";
                 aptList += "<li>" +
@@ -26,13 +16,13 @@ $(document).ready(function () {
                     "<span class='label apply-link'></span>" +
                     "</li>";
                 aptArr.map(function (apt) {
-                    var aptName = apt['ApartmentName'],
-                        numBeds = apt['Beds'],
-                        numBaths = Math.round(apt['Baths']*2)/2,
-                        floorName = apt['FloorplanName'],
-                        rentMin=parseInt(apt['MinimumRent']),
-                        rentMax=parseInt(apt['MaximumRent']),
-                        applyLink = apt['ApplyOnlineURL'];
+                    var aptName = apt.ApartmentName,
+                        numBeds = apt.Beds,
+                        numBaths = Math.round(apt.Baths*2)/2,
+                        floorName = apt.FloorplanName,
+                        rentMin=parseInt(apt.MinimumRent),
+                        rentMax=parseInt(apt.MaximumRent),
+                        applyLink = apt.ApplyOnlineURL;
                     aptList += "<li>" +
                         "<span class='name'>" + aptName + "</span>" +
                         "<span class='floor'>" + floorName + "</span>" +
@@ -42,21 +32,13 @@ $(document).ready(function () {
                         "<a class='apply-link' target='_blank' href='" + applyLink + "'>Apply Online</a>" +
                         "</li>";
                 });
-                $('#test-container').html(aptList + "</ul>");
+                document.getElementById('apt-container').innerHTML = aptList + "</ul>";
             }
+        })
+        .catch(function (err) {
+            document.getElementById('apt-container').innerHTML = err;
+            console.log('FAIL');
+            console.table(err);
         });
-    // $.ajax({//testing
-    //     type: "GET",
-    //     url: "/api/apartments.php",
-    //     dataType: "json",
-    //     async: true,
-    //     success: function (res) {
-    //         $('#test-container').html(res['data']);
-    //         console.log(res['data']);
-    //     },
-    //     error: function (res) {
-    //         $('#test-container').html(res.responseText);
-    //         console.log('FAIL\n');
-    //     }
-    // });
-});
+})();
+

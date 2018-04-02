@@ -6,13 +6,13 @@ function apts(){
 	$timestamp=!file_exists($cachefile)?(time()-(($minutes+1) * 60)):filemtime($cachefile);//fileexists logic needs to happen before $overtime logic
     $over_time=(time() - $timestamp) > ($minutes * 60);
     if($over_time){
-        $data = refresh_apts($url,$cachefile);
+        $data = refresh_data($url,$cachefile);
         file_put_contents($cachefile, json_encode($data, LOCK_EX));
     }
     $data = file_get_contents($cachefile);
 	return json_decode($data);
 }
-function refresh_apts($url,$file) {
+function refresh_data($url,$file) {
 	$ch = curl_init();
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -31,7 +31,4 @@ function deliver_response($status, $status_message, $data) {
 	$json_response = json_encode($response);
 	echo $json_response;
 }
-if(isset($_GET)) {
-    $data=apts();
-    deliver_response(200, "success", $data);
-}
+if(isset($_GET)) {deliver_response(200, "success", apts());}
