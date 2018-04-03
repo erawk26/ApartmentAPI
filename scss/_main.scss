@@ -1,50 +1,108 @@
+.apt-container {
+  padding: 15px;
+}
 .apartments {
-  @include flex($direction: column);
+  background: $ul-body;
+  @include flex($direction: column, $wrap: nowrap);
+  @media (max-width: $tablet-breakpoint - 1) {
+    @include flex(flex-start, stretch, $direction: row, $wrap: wrap);
+    @include flex-grid(3, 15px);
+  }
+  @media (max-width: 550px) {
+    @include flex-grid(2, 15px);
+  }
+  @media (max-width: 420px) {
+    @include flex-grid(1, 0px, 15px);
+  }
   > li {
-    @extend %boxw;
-    @include flex(flex-start, stretch);
-    width: 100%;
-    > * {
-      @include flexchild(1, null, null);
-      text-align: center;
-      display: block;
-      padding: 10px;
-      max-width: 245px;
+    border: 1px solid $grey;
+    //@extend %boxw;
+    @media (max-width: $tablet-breakpoint - 1) {
+      @include flex(flex-start, stretch, $wrap: wrap);
+      padding: 15px;
     }
-    &:nth-child(odd) {
-      background: #999CBF;
-      > *:nth-child(even) {
-        background: rgba(white, .30);
+    @media (min-width: $tablet-breakpoint) {
+      @include set-max-width(815px);
+      @include flex(flex-start, stretch, $wrap: nowrap);
+      width: 100%;
+      > * {
+        @include flexchild(1, null, null);
+        text-align: center;
+        display: block;
+        padding: 10px;
+        max-width: 245px;
+        &:nth-child(odd) {
+          background: $li-cells;
+        }
+        &:not(:last-child) {
+          border-right: 1px solid gray;
+        }
+      }
+      &:nth-child(odd) {
+        background: $li-rows;
+      }
+      &:not(:last-child) {
+        border-bottom: none;
       }
     }
-    &:nth-child(even) {
-      background:#99bfa3;
-      > *:nth-child(even) {
-        background: rgba(white, .30);
-      }
+  }
+  .desktop-labels {
+    @media (max-width: $tablet-breakpoint - 1) {
+      display: none;
     }
-
+  }
+  .mobile-label {
+    //&:after {
+    //  content: ':';
+    padding: 0 0.25em 0 0;
+    //}
+    @media (min-width: $tablet-breakpoint) {
+      display: none !important;
+    }
   }
   .name {
     text-align: left;
     max-width: 100px;
   }
   .floor {
+    @media (min-width: $tablet-breakpoint) {
+      max-width: 190px;
+    }
     &:not(.label) {
       text-align: left
     }
   }
-  .beds {
+  .beds,.baths {
     max-width: 70px;
-  }
-  .baths {
-    max-width: 70px;
+    &.label {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @media (max-width: $tablet-breakpoint - 1) {
+      margin-right: .5em;
+    }
   }
   .min-rent {
   }
   .max-rent {
   }
-  .apply-link {
+  .apply {
+    text-align: center;
+    min-width: 135px;
+    &.label {
+      background: none !important;
+    }
+    @media (max-width: $tablet-breakpoint - 1) {
+      width: 100%;
+      margin-top: 10px;
+    }
   }
-  //@extend %ul-nostyle;
+  button, a[role='button'] {
+    display: inline-block;
+    margin: 0 auto;
+    font-size: .75em;
+    &:hover {
+      background: rgba(#000, .2)
+    }
+  }
 }

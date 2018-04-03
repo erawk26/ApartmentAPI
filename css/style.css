@@ -7,8 +7,8 @@
 
 /* line 9, ../scss/_global.scss */
 * {
-  -webkit-transition: all 1s ease, color .25s ease-in-out;
-  transition: all 1s ease, color .25s ease-in-out;
+  -webkit-transition: all 1s ease, color .25s ease-in-out,background .25s ease-in-out;
+  transition: all 1s ease, color .25s ease-in-out,background .25s ease-in-out;
 }
 
 /* line 13, ../scss/_global.scss */
@@ -35,6 +35,14 @@ a:hover {
 }
 
 /* line 34, ../scss/_global.scss */
+button, a[role='button'] {
+  background: transparent;
+  border: 1px solid #333;
+  padding: 5px 10px;
+  text-transform: uppercase;
+}
+
+/* line 41, ../scss/_global.scss */
 h1,
 h2,
 h3,
@@ -44,31 +52,26 @@ h5 {
   font-weight: 500;
 }
 
-/* line 64, ../scss/_global.scss */
+/* line 71, ../scss/_global.scss */
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-/* line 67, ../scss/_global.scss */
+/* line 74, ../scss/_global.scss */
 ul li {
   margin: 0;
   padding: 0;
 }
 
-/* line 203, ../scss/_global.scss */
-.apartments > li {
-  display: block;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-/* line 207, ../scss/_global.scss */
-.apartments > li * {
-  box-sizing: border-box;
+/* line 1, ../scss/_main.scss */
+.apt-container {
+  padding: 15px;
 }
 
-/* line 1, ../scss/_main.scss */
+/* line 4, ../scss/_main.scss */
 .apartments {
+  background: #fff;
   display: -ms-flexbox;
   display: -moz-flex;
   display: -webkit-box;
@@ -78,6 +81,8 @@ ul li {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
   -moz-justify-content: center;
   -ms-flex-pack: center;
   -webkit-box-pack: center;
@@ -87,65 +92,230 @@ ul li {
   -webkit-box-align: center;
           align-items: center;
 }
-/* line 3, ../scss/_main.scss */
+@media (max-width: 767px) {
+  /* line 4, ../scss/_main.scss */
+  .apartments {
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-box;
+    display: flex;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -moz-justify-content: flex-start;
+    -ms-flex-pack: start;
+    -webkit-box-pack: start;
+            justify-content: flex-start;
+    -moz-align-items: stretch;
+    -ms-flex-align: stretch;
+    -webkit-box-align: stretch;
+            align-items: stretch;
+    margin-top: -15px;
+    margin-left: -15px;
+    width: auto;
+  }
+  /* line 143, ../scss/_mixins.scss */
+  .apartments > * {
+    margin-top: 15px;
+    margin-left: 15px;
+    box-sizing: border-box;
+    -moz-flex: 1 0 calc((99.5% / 3) - 15px);
+    -ms-flex: 1 0 calc((99.5% / 3) - 15px);
+    -webkit-box-flex: 1;
+            flex: 1 0 calc((99.5% / 3) - 15px);
+    min-width: calc((99.5% / 3) - 15px);
+    max-width: calc((100% / 3) - 15px);
+  }
+}
+@media (max-width: 550px) {
+  /* line 4, ../scss/_main.scss */
+  .apartments {
+    margin-top: -15px;
+    margin-left: -15px;
+    width: auto;
+  }
+  /* line 143, ../scss/_mixins.scss */
+  .apartments > * {
+    margin-top: 15px;
+    margin-left: 15px;
+    box-sizing: border-box;
+    -moz-flex: 1 0 calc((99.5% / 2) - 15px);
+    -ms-flex: 1 0 calc((99.5% / 2) - 15px);
+    -webkit-box-flex: 1;
+            flex: 1 0 calc((99.5% / 2) - 15px);
+    min-width: calc((99.5% / 2) - 15px);
+    max-width: calc((100% / 2) - 15px);
+  }
+}
+@media (max-width: 420px) {
+  /* line 4, ../scss/_main.scss */
+  .apartments {
+    margin-top: -15px;
+    margin-left: 0px;
+    width: auto;
+  }
+  /* line 143, ../scss/_mixins.scss */
+  .apartments > * {
+    margin-top: 15px;
+    margin-left: 0px;
+    box-sizing: border-box;
+    -moz-flex: 1 0 calc((99.5% / 1) - 0px);
+    -ms-flex: 1 0 calc((99.5% / 1) - 0px);
+    -webkit-box-flex: 1;
+            flex: 1 0 calc((99.5% / 1) - 0px);
+    min-width: calc((99.5% / 1) - 0px);
+    max-width: calc((100% / 1) - 0px);
+  }
+}
+/* line 17, ../scss/_main.scss */
 .apartments > li {
-  display: -ms-flexbox;
-  display: -moz-flex;
-  display: -webkit-box;
-  display: flex;
-  -moz-justify-content: flex-start;
-  -ms-flex-pack: start;
-  -webkit-box-pack: start;
-          justify-content: flex-start;
-  -moz-align-items: stretch;
-  -ms-flex-align: stretch;
-  -webkit-box-align: stretch;
-          align-items: stretch;
-  width: 100%;
+  border: 1px solid #7d7d7d;
 }
-/* line 7, ../scss/_main.scss */
-.apartments > li > * {
-  -moz-flex: 1;
-  -ms-flex: 1;
-  -webkit-box-flex: 1;
-          flex: 1;
-  text-align: center;
-  display: block;
-  padding: 10px;
-  max-width: 245px;
+@media (max-width: 767px) {
+  /* line 17, ../scss/_main.scss */
+  .apartments > li {
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -moz-justify-content: flex-start;
+    -ms-flex-pack: start;
+    -webkit-box-pack: start;
+            justify-content: flex-start;
+    -moz-align-items: stretch;
+    -ms-flex-align: stretch;
+    -webkit-box-align: stretch;
+            align-items: stretch;
+    padding: 15px;
+  }
 }
-/* line 14, ../scss/_main.scss */
-.apartments > li:nth-child(odd) {
-  background: #999CBF;
+@media (min-width: 768px) {
+  /* line 17, ../scss/_main.scss */
+  .apartments > li {
+    max-width: 815px;
+    margin-left: auto;
+    margin-right: auto;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -moz-justify-content: flex-start;
+    -ms-flex-pack: start;
+    -webkit-box-pack: start;
+            justify-content: flex-start;
+    -moz-align-items: stretch;
+    -ms-flex-align: stretch;
+    -webkit-box-align: stretch;
+            align-items: stretch;
+    width: 100%;
+  }
+  /* line 28, ../scss/_main.scss */
+  .apartments > li > * {
+    text-align: center;
+    display: block;
+    padding: 10px;
+    max-width: 245px;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+            flex: 1;
+  }
+  /* line 34, ../scss/_main.scss */
+  .apartments > li > *:nth-child(odd) {
+    background: rgba(0, 0, 0, 0.15);
+  }
+  /* line 37, ../scss/_main.scss */
+  .apartments > li > *:not(:last-child) {
+    border-right: 1px solid gray;
+  }
+  /* line 41, ../scss/_main.scss */
+  .apartments > li:nth-child(odd) {
+    background: rgba(189, 189, 189, 0.3);
+  }
+  /* line 44, ../scss/_main.scss */
+  .apartments > li:not(:last-child) {
+    border-bottom: none;
+  }
 }
-/* line 16, ../scss/_main.scss */
-.apartments > li:nth-child(odd) > *:nth-child(even) {
-  background: rgba(255, 255, 255, 0.3);
+@media (max-width: 767px) {
+  /* line 49, ../scss/_main.scss */
+  .apartments .desktop-labels {
+    display: none;
+  }
 }
-/* line 20, ../scss/_main.scss */
-.apartments > li:nth-child(even) {
-  background: #99bfa3;
+/* line 54, ../scss/_main.scss */
+.apartments .mobile-label {
+  padding: 0 0.25em 0 0;
 }
-/* line 22, ../scss/_main.scss */
-.apartments > li:nth-child(even) > *:nth-child(even) {
-  background: rgba(255, 255, 255, 0.3);
+@media (min-width: 768px) {
+  /* line 54, ../scss/_main.scss */
+  .apartments .mobile-label {
+    display: none !important;
+  }
 }
-/* line 28, ../scss/_main.scss */
+/* line 63, ../scss/_main.scss */
 .apartments .name {
   text-align: left;
   max-width: 100px;
 }
-/* line 33, ../scss/_main.scss */
+@media (min-width: 768px) {
+  /* line 67, ../scss/_main.scss */
+  .apartments .floor {
+    max-width: 190px;
+  }
+}
+/* line 71, ../scss/_main.scss */
 .apartments .floor:not(.label) {
   text-align: left;
 }
-/* line 37, ../scss/_main.scss */
-.apartments .beds {
+/* line 75, ../scss/_main.scss */
+.apartments .beds, .apartments .baths {
   max-width: 70px;
 }
-/* line 40, ../scss/_main.scss */
-.apartments .baths {
-  max-width: 70px;
+/* line 77, ../scss/_main.scss */
+.apartments .beds.label, .apartments .baths.label {
+  padding-left: 0;
+  padding-right: 0;
+}
+@media (max-width: 767px) {
+  /* line 75, ../scss/_main.scss */
+  .apartments .beds, .apartments .baths {
+    margin-right: .5em;
+  }
+}
+/* line 89, ../scss/_main.scss */
+.apartments .apply {
+  text-align: center;
+  min-width: 135px;
+}
+/* line 92, ../scss/_main.scss */
+.apartments .apply.label {
+  background: none !important;
+}
+@media (max-width: 767px) {
+  /* line 89, ../scss/_main.scss */
+  .apartments .apply {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+/* line 100, ../scss/_main.scss */
+.apartments button, .apartments a[role='button'] {
+  display: inline-block;
+  margin: 0 auto;
+  font-size: .75em;
+}
+/* line 104, ../scss/_main.scss */
+.apartments button:hover, .apartments a[role='button']:hover {
+  background: rgba(0, 0, 0, 0.2);
 }
 
 @-webkit-keyframes bounce-in {
