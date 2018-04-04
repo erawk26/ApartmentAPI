@@ -118,7 +118,7 @@ ul li {
     margin-left: -15px;
     width: auto;
   }
-  /* line 143, ../scss/_mixins.scss */
+  /* line 155, ../scss/_mixins.scss */
   .apartments > * {
     margin-top: 15px;
     margin-left: 15px;
@@ -138,7 +138,7 @@ ul li {
     margin-left: -15px;
     width: auto;
   }
-  /* line 143, ../scss/_mixins.scss */
+  /* line 155, ../scss/_mixins.scss */
   .apartments > * {
     margin-top: 15px;
     margin-left: 15px;
@@ -159,7 +159,7 @@ ul li {
     width: auto;
     min-width: 200px;
   }
-  /* line 143, ../scss/_mixins.scss */
+  /* line 155, ../scss/_mixins.scss */
   .apartments > * {
     margin-top: 15px;
     margin-left: 0px;
@@ -305,8 +305,20 @@ ul li {
 .apartments .apply {
   text-align: center;
   min-width: 135px;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-box;
+  display: flex;
+  -moz-justify-content: center;
+  -ms-flex-pack: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -moz-align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+          align-items: center;
 }
-/* line 98, ../scss/_main.scss */
+/* line 99, ../scss/_main.scss */
 .apartments .apply.label {
   background: none !important;
 }
@@ -317,13 +329,13 @@ ul li {
     margin-top: 10px;
   }
 }
-/* line 106, ../scss/_main.scss */
+/* line 107, ../scss/_main.scss */
 .apartments button, .apartments a[role='button'] {
   display: inline-block;
   margin: 0 auto;
   font-size: .75em;
 }
-/* line 110, ../scss/_main.scss */
+/* line 111, ../scss/_main.scss */
 .apartments button:hover, .apartments a[role='button']:hover {
   background: rgba(0, 0, 0, 0.2);
 }

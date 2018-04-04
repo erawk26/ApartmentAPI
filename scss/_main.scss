@@ -5,27 +5,27 @@
 .apartments {
   background: $ul-body;
   @include flex($direction: column, $wrap: nowrap);
-  @media (max-width: $tablet-breakpoint - 1) {
+  @include card-format {
     @include flex(flex-start, stretch, $direction: row, $wrap: wrap);
-    @include flex-grid(3, 15px);
+    @include flex-grid(3, 15px); //triple column
   }
   @media (max-width: 550px) {
-    @include flex-grid(2, 15px);
+    @include flex-grid(2, 15px); //double column
   }
   @media (max-width: 380px) {
-    @include flex-grid(1, 0px, 15px);
+    @include flex-grid(1, 0px, 15px); //single column
     min-width: 200px;
   }
   > li {
     border: 1px solid $grey;
-    @media (max-width: $tablet-breakpoint - 1) {
+    @include card-format {
       @include flex(center, stretch, $wrap: wrap);
       padding: 15px;
       > * {
         text-align: center;
       }
     }
-    @media (min-width: $tablet-breakpoint) {
+    @include table-format {
       @include set-max-width(815px);
       @include flex(flex-start, stretch, $wrap: nowrap);
       width: 100%;
@@ -51,7 +51,7 @@
     }
   }
   .desktop-labels {
-    @media (max-width: $tablet-breakpoint - 1) {
+    @include card-format {
       display: none;
     }
   }
@@ -61,7 +61,7 @@
     //  content: ':';
     padding: 0 0.25em 0 0;
     //}
-    @media (min-width: $tablet-breakpoint) {
+    @include table-format {
       display: none !important;
     }
   }
@@ -70,8 +70,8 @@
     max-width: 100px;
   }
   .floor {
-    width:100%;
-    @media (min-width: $tablet-breakpoint) {
+    width: 100%;
+    @include table-format {
       max-width: 190px;
       &:not(.label) {
         text-align: left
@@ -84,7 +84,7 @@
       padding-left: 0;
       padding-right: 0;
     }
-    @media (max-width: $tablet-breakpoint - 1) {
+    @include card-format {
       margin-right: .5em;
     }
   }
@@ -95,10 +95,11 @@
   .apply {
     text-align: center;
     min-width: 135px;
+    @include flex;
     &.label {
       background: none !important;
     }
-    @media (max-width: $tablet-breakpoint - 1) {
+    @include card-format {
       width: 100%;
       margin-top: 10px;
     }
