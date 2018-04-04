@@ -1,6 +1,7 @@
 .apt-container {
   padding: 15px;
 }
+
 .apartments {
   background: $ul-body;
   @include flex($direction: column, $wrap: nowrap);
@@ -11,15 +12,18 @@
   @media (max-width: 550px) {
     @include flex-grid(2, 15px);
   }
-  @media (max-width: 420px) {
+  @media (max-width: 380px) {
     @include flex-grid(1, 0px, 15px);
+    min-width: 200px;
   }
   > li {
     border: 1px solid $grey;
-    //@extend %boxw;
     @media (max-width: $tablet-breakpoint - 1) {
-      @include flex(flex-start, stretch, $wrap: wrap);
+      @include flex(center, stretch, $wrap: wrap);
       padding: 15px;
+      > * {
+        text-align: center;
+      }
     }
     @media (min-width: $tablet-breakpoint) {
       @include set-max-width(815px);
@@ -52,6 +56,7 @@
     }
   }
   .mobile-label {
+    font-size: .7em;
     //&:after {
     //  content: ':';
     padding: 0 0.25em 0 0;
@@ -65,14 +70,15 @@
     max-width: 100px;
   }
   .floor {
+    width:100%;
     @media (min-width: $tablet-breakpoint) {
       max-width: 190px;
-    }
-    &:not(.label) {
-      text-align: left
+      &:not(.label) {
+        text-align: left
+      }
     }
   }
-  .beds,.baths {
+  .beds, .baths {
     max-width: 70px;
     &.label {
       padding-left: 0;

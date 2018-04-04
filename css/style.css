@@ -69,7 +69,7 @@ ul li {
   padding: 15px;
 }
 
-/* line 4, ../scss/_main.scss */
+/* line 5, ../scss/_main.scss */
 .apartments {
   background: #fff;
   display: -ms-flexbox;
@@ -93,7 +93,7 @@ ul li {
           align-items: center;
 }
 @media (max-width: 767px) {
-  /* line 4, ../scss/_main.scss */
+  /* line 5, ../scss/_main.scss */
   .apartments {
     display: -ms-flexbox;
     display: -moz-flex;
@@ -132,7 +132,7 @@ ul li {
   }
 }
 @media (max-width: 550px) {
-  /* line 4, ../scss/_main.scss */
+  /* line 5, ../scss/_main.scss */
   .apartments {
     margin-top: -15px;
     margin-left: -15px;
@@ -151,12 +151,13 @@ ul li {
     max-width: calc((100% / 2) - 15px);
   }
 }
-@media (max-width: 420px) {
-  /* line 4, ../scss/_main.scss */
+@media (max-width: 380px) {
+  /* line 5, ../scss/_main.scss */
   .apartments {
     margin-top: -15px;
     margin-left: 0px;
     width: auto;
+    min-width: 200px;
   }
   /* line 143, ../scss/_mixins.scss */
   .apartments > * {
@@ -171,12 +172,12 @@ ul li {
     max-width: calc((100% / 1) - 0px);
   }
 }
-/* line 17, ../scss/_main.scss */
+/* line 19, ../scss/_main.scss */
 .apartments > li {
   border: 1px solid #7d7d7d;
 }
 @media (max-width: 767px) {
-  /* line 17, ../scss/_main.scss */
+  /* line 19, ../scss/_main.scss */
   .apartments > li {
     display: -ms-flexbox;
     display: -moz-flex;
@@ -184,19 +185,23 @@ ul li {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    -moz-justify-content: flex-start;
-    -ms-flex-pack: start;
-    -webkit-box-pack: start;
-            justify-content: flex-start;
+    -moz-justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-box-pack: center;
+            justify-content: center;
     -moz-align-items: stretch;
     -ms-flex-align: stretch;
     -webkit-box-align: stretch;
             align-items: stretch;
     padding: 15px;
   }
+  /* line 24, ../scss/_main.scss */
+  .apartments > li > * {
+    text-align: center;
+  }
 }
 @media (min-width: 768px) {
-  /* line 17, ../scss/_main.scss */
+  /* line 19, ../scss/_main.scss */
   .apartments > li {
     max-width: 815px;
     margin-left: auto;
@@ -217,103 +222,108 @@ ul li {
             align-items: stretch;
     width: 100%;
   }
-  /* line 28, ../scss/_main.scss */
+  /* line 32, ../scss/_main.scss */
   .apartments > li > * {
-    text-align: center;
-    display: block;
-    padding: 10px;
-    max-width: 245px;
     -moz-flex: 1;
     -ms-flex: 1;
     -webkit-box-flex: 1;
             flex: 1;
+    text-align: center;
+    display: block;
+    padding: 10px;
+    max-width: 245px;
   }
-  /* line 34, ../scss/_main.scss */
+  /* line 38, ../scss/_main.scss */
   .apartments > li > *:nth-child(odd) {
     background: rgba(0, 0, 0, 0.15);
   }
-  /* line 37, ../scss/_main.scss */
+  /* line 41, ../scss/_main.scss */
   .apartments > li > *:not(:last-child) {
     border-right: 1px solid gray;
   }
-  /* line 41, ../scss/_main.scss */
+  /* line 45, ../scss/_main.scss */
   .apartments > li:nth-child(odd) {
     background: rgba(189, 189, 189, 0.3);
   }
-  /* line 44, ../scss/_main.scss */
+  /* line 48, ../scss/_main.scss */
   .apartments > li:not(:last-child) {
     border-bottom: none;
   }
 }
 @media (max-width: 767px) {
-  /* line 49, ../scss/_main.scss */
+  /* line 53, ../scss/_main.scss */
   .apartments .desktop-labels {
     display: none;
   }
 }
-/* line 54, ../scss/_main.scss */
+/* line 58, ../scss/_main.scss */
 .apartments .mobile-label {
+  font-size: .7em;
   padding: 0 0.25em 0 0;
 }
 @media (min-width: 768px) {
-  /* line 54, ../scss/_main.scss */
+  /* line 58, ../scss/_main.scss */
   .apartments .mobile-label {
     display: none !important;
   }
 }
-/* line 63, ../scss/_main.scss */
+/* line 68, ../scss/_main.scss */
 .apartments .name {
   text-align: left;
   max-width: 100px;
 }
+/* line 72, ../scss/_main.scss */
+.apartments .floor {
+  width: 100%;
+}
 @media (min-width: 768px) {
-  /* line 67, ../scss/_main.scss */
+  /* line 72, ../scss/_main.scss */
   .apartments .floor {
     max-width: 190px;
   }
+  /* line 76, ../scss/_main.scss */
+  .apartments .floor:not(.label) {
+    text-align: left;
+  }
 }
-/* line 71, ../scss/_main.scss */
-.apartments .floor:not(.label) {
-  text-align: left;
-}
-/* line 75, ../scss/_main.scss */
+/* line 81, ../scss/_main.scss */
 .apartments .beds, .apartments .baths {
   max-width: 70px;
 }
-/* line 77, ../scss/_main.scss */
+/* line 83, ../scss/_main.scss */
 .apartments .beds.label, .apartments .baths.label {
   padding-left: 0;
   padding-right: 0;
 }
 @media (max-width: 767px) {
-  /* line 75, ../scss/_main.scss */
+  /* line 81, ../scss/_main.scss */
   .apartments .beds, .apartments .baths {
     margin-right: .5em;
   }
 }
-/* line 89, ../scss/_main.scss */
+/* line 95, ../scss/_main.scss */
 .apartments .apply {
   text-align: center;
   min-width: 135px;
 }
-/* line 92, ../scss/_main.scss */
+/* line 98, ../scss/_main.scss */
 .apartments .apply.label {
   background: none !important;
 }
 @media (max-width: 767px) {
-  /* line 89, ../scss/_main.scss */
+  /* line 95, ../scss/_main.scss */
   .apartments .apply {
     width: 100%;
     margin-top: 10px;
   }
 }
-/* line 100, ../scss/_main.scss */
+/* line 106, ../scss/_main.scss */
 .apartments button, .apartments a[role='button'] {
   display: inline-block;
   margin: 0 auto;
   font-size: .75em;
 }
-/* line 104, ../scss/_main.scss */
+/* line 110, ../scss/_main.scss */
 .apartments button:hover, .apartments a[role='button']:hover {
   background: rgba(0, 0, 0, 0.2);
 }
