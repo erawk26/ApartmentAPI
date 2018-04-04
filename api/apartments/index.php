@@ -1,7 +1,7 @@
 <?php
 function apts(){
 	$url = 'https://www.rentcafe.com/rentcafeapi.aspx?requestType=apartmentavailability&APIToken=NDY5OTI%3d-XDY6KCjhwhg%3d&propertyCode=p0155985';
-	$cachefile = md5($url).'.json';
+    $cachefile = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . md5($url) . '.json';
     $minutes = 10;
 	$timestamp=!file_exists($cachefile)?(time()-(($minutes+1) * 60)):filemtime($cachefile);//fileexists logic needs to happen before $overtime logic
     $over_time=(time() - $timestamp) > ($minutes * 60);
