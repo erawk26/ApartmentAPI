@@ -1,4 +1,19 @@
+"use strict";
 (function () {
+	fetch("/api/events/")
+		.then(function (response) {
+			return response.json();
+		})
+		.then(function (obj) {
+			document.getElementById('event-container').innerHTML = obj.JSON.stringify();
+			console.log('success');
+			console.table(obj);
+		})
+		.catch(function (err) {
+			document.getElementById('event-container').innerHTML = err;
+			console.log('FAIL');
+			console.table(err);
+		});
     fetch("/api/apartments/")
         .then(function (response) {
             return response.json();
